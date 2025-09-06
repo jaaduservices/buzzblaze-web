@@ -1,0 +1,10 @@
+export { default as HomePage } from './HomePage';
+export { default as ComingSoonPage } from './ComingSoonPage';
+export { default as PortfolioPage } from './PortfolioPage';
+export { default as ServicesPage } from './ServicesPage';
+export { default as AboutPage } from './AboutPage';
+export { default as BlogPage } from './BlogPage';
+export { default as ContactPage } from './ContactPage';
+export { default as BrandDesignPage } from './BrandDesignPage';
+export { default as GrowthMarketingPage } from './GrowthMarketingPage';
+export { default as ContentStrategyPage } from './ContentStrategyPage'; 

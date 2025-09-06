@@ -1,0 +1,480 @@
+@import url('https://fonts.googleapis.com/css2?family=Netflix+Sans:wght@300;400;500;600;700;800;900&family=Helvetica+Neue:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    background: linear-gradient(180deg, #000000 0%, #0f0f0f 50%, #141414 100%);
+    color: #ffffff;
+  }
+
+  /* Netflix-style scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #0f0f0f;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #FF6B35 0%, #E55A2B 100%);
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #CC4A1F 0%, #FF6B35 100%);
+  }
+
+  /* Netflix typography hierarchy */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading font-bold text-white;
+    letter-spacing: -0.02em;
+  }
+
+  h1 {
+    font-size: 3.75rem;
+    line-height: 1;
+    font-weight: 800;
+  }
+
+  h2 {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+    font-weight: 700;
+  }
+
+  h3 {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+    font-weight: 600;
+  }
+
+  p {
+    @apply text-text-secondary;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .text-muted {
+    @apply text-text-muted;
+  }
+
+  @media (min-width: 768px) {
+    h1 {
+      font-size: 3.5rem;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+    }
+
+    h3 {
+      font-size: 2rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    h1 {
+      font-size: 4.5rem;
+    }
+
+    h2 {
+      font-size: 3rem;
+    }
+
+    h3 {
+      font-size: 2.25rem;
+    }
+
+    p {
+      font-size: 1.125rem;
+      line-height: 1.75rem;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    h1 {
+      font-size: 6rem;
+    }
+  }
+
+  /* Mobile-first typography utilities */
+  .section-title {
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight;
+  }
+
+  .section-subtitle {
+    @apply text-base sm:text-lg md:text-xl lg:text-2xl text-neutral-300 leading-relaxed;
+  }
+
+  .card-title {
+    @apply text-lg sm:text-xl md:text-2xl font-bold text-white;
+  }
+
+  .mobile-text-sm {
+    @apply text-sm sm:text-base;
+  }
+
+  .mobile-text-base {
+    @apply text-base sm:text-lg;
+  }
+
+  .mobile-text-lg {
+    @apply text-lg sm:text-xl md:text-2xl;
+  }
+}
+
+@layer components {
+
+  /* Netflix-style button styles */
+  .btn-primary {
+    @apply relative overflow-hidden bg-gradient-netflix hover:bg-gradient-netflix-subtle text-white font-semibold py-3 sm:py-netflix-3 px-4 sm:px-netflix-6 rounded-netflix transition-all duration-300 shadow-netflix hover:shadow-netflix-lg transform hover:scale-105;
+    font-size: 0.875rem;
+    letter-spacing: 0.025em;
+    min-height: 44px;
+    /* iOS touch target size */
+  }
+
+  .btn-primary::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-white/30 to-transparent translate-x-[-100%] skew-x-12 transition-transform duration-500;
+  }
+
+  .btn-primary:hover::before {
+    @apply translate-x-[100%];
+  }
+
+  .btn-secondary {
+    @apply bg-transparent hover:bg-netflix-500/10 text-text-secondary hover:text-white font-medium py-3 sm:py-netflix-3 px-4 sm:px-netflix-6 rounded-netflix border border-neutral-600/50 hover:border-netflix-500/50 transition-all duration-300 backdrop-blur-sm;
+    font-size: 0.875rem;
+    min-height: 44px;
+    /* iOS touch target size */
+  }
+
+  .btn-ghost {
+    @apply bg-transparent hover:bg-white/5 text-text-secondary hover:text-white font-medium py-netflix-3 px-netflix-6 rounded-netflix transition-all duration-300;
+    font-size: 0.875rem;
+  }
+
+  .btn-netflix-white {
+    @apply bg-white hover:bg-neutral-200 text-black font-semibold py-netflix-3 px-netflix-6 rounded-netflix transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105;
+    font-size: 0.875rem;
+  }
+
+  /* Netflix-style section styles */
+  .section-padding {
+    @apply py-8 sm:py-12 md:py-16 lg:py-netflix-20 xl:py-netflix-24;
+  }
+
+  .container-custom {
+    @apply container mx-auto px-4 sm:px-6 lg:px-netflix-8;
+    max-width: 1200px;
+  }
+
+  /* Mobile-optimized spacing */
+  .mobile-section-padding {
+    @apply py-6 sm:py-8 md:py-12 lg:py-16;
+  }
+
+  .mobile-container {
+    @apply px-4 sm:px-6;
+  }
+
+  .mobile-card-padding {
+    @apply p-4 sm:p-6 lg:p-netflix-6;
+  }
+
+  /* Netflix gradient text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-netflix-400 via-netflix-500 to-orange-400 bg-clip-text text-transparent;
+  }
+
+  .gradient-text-alt {
+    @apply bg-gradient-to-r from-white via-neutral-200 to-neutral-400 bg-clip-text text-transparent;
+  }
+
+  /* Netflix-style card styles */
+  .card {
+    @apply bg-gradient-card backdrop-blur-xl border border-neutral-800/30 rounded-netflix-lg p-4 sm:p-6 lg:p-netflix-6 transition-all duration-300;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+  }
+
+  .card-hover {
+    @apply hover:bg-card-hover hover:border-netflix-500/20 hover:shadow-netflix-hover hover:-translate-y-1 transform transition-all duration-300;
+  }
+
+  .card-glass {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-netflix-lg p-4 sm:p-6 lg:p-netflix-6;
+  }
+
+  .card-netflix {
+    @apply bg-neutral-900 hover:bg-neutral-800 border-none rounded-netflix-lg overflow-hidden transition-all duration-300 transform hover:scale-105 shadow-netflix-card hover:shadow-netflix-hover;
+  }
+
+  /* Modern grid layouts */
+  .grid-modern {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-netflix-6;
+  }
+
+  .grid-feature {
+    @apply grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-netflix-16 items-center;
+  }
+
+  /* Netflix-style content grid */
+  .grid-netflix {
+    @apply grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-2 sm:gap-3 lg:gap-netflix-3;
+  }
+
+  /* Mobile-first grid layouts */
+  .grid-mobile-1 {
+    @apply grid grid-cols-1 gap-4 sm:gap-6;
+  }
+
+  .grid-mobile-2 {
+    @apply grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6;
+  }
+
+  .grid-mobile-3 {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6;
+  }
+
+  .grid-mobile-4 {
+    @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6;
+  }
+
+  /* Animated elements */
+  .animate-on-scroll {
+    @apply opacity-0 translate-y-8 transition-all duration-700;
+  }
+
+  .animate-on-scroll.in-view {
+    @apply opacity-100 translate-y-0;
+  }
+
+  /* Netflix hero styles */
+  .hero-title {
+    @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black leading-tight tracking-tight;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+  }
+
+  .hero-subtitle {
+    @apply text-base sm:text-lg md:text-xl lg:text-2xl font-normal text-text-secondary leading-relaxed;
+    font-weight: 400;
+  }
+
+  /* Netflix navigation */
+  .nav-link {
+    @apply relative text-text-secondary hover:text-white font-medium transition-colors duration-300;
+    font-size: 0.875rem;
+  }
+
+  .nav-link::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-netflix-500 to-orange-400 transition-all duration-300;
+  }
+
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+
+  .nav-link.active {
+    @apply text-white;
+  }
+
+  .nav-link.active::after {
+    @apply w-full;
+  }
+
+  /* Netflix header */
+  .header-netflix {
+    @apply fixed top-0 left-0 right-0 z-50 transition-all duration-500;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.7) 0%, transparent 100%);
+  }
+
+  .header-netflix.scrolled {
+    @apply bg-neutral-950/95 backdrop-blur-md border-b border-neutral-800/50;
+  }
+
+  /* Netflix form styles */
+  .form-input {
+    @apply w-full bg-neutral-800/50 border border-neutral-700/50 rounded-lg px-4 py-3 text-white placeholder:text-text-muted focus:border-netflix-500/50 focus:outline-none focus:ring-2 focus:ring-netflix-500/20 transition-all duration-300;
+    font-size: 0.875rem;
+  }
+
+  .form-textarea {
+    @apply w-full bg-neutral-800/50 border border-neutral-700/50 rounded-lg px-4 py-3 text-white placeholder:text-text-muted focus:border-netflix-500/50 focus:outline-none focus:ring-2 focus:ring-netflix-500/20 transition-all duration-300 resize-none;
+    font-size: 0.875rem;
+  }
+
+  /* Netflix content sections */
+  .content-section {
+    @apply bg-gradient-netflix-dark border-t border-neutral-800/20;
+  }
+
+  .content-section:first-child {
+    @apply border-t-0;
+  }
+
+  /* Netflix loading animations */
+  .loading-dots {
+    @apply inline-flex space-x-1;
+  }
+
+  .loading-dots>div {
+    @apply w-2 h-2 bg-netflix-500 rounded-full animate-bounce;
+  }
+
+  .loading-dots>div:nth-child(2) {
+    animation-delay: 0.1s;
+  }
+
+  .loading-dots>div:nth-child(3) {
+    animation-delay: 0.2s;
+  }
+
+  /* Netflix-style play button */
+  .play-button {
+    @apply inline-flex items-center justify-center bg-white hover:bg-neutral-200 text-black font-semibold rounded-lg transition-all duration-300 transform hover:scale-105;
+    padding: 0.75rem 1.5rem 0.75rem 1.25rem;
+    gap: 0.5rem;
+    min-height: 44px;
+    /* iOS touch target size */
+  }
+
+  .play-button svg {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-left: 0.125rem;
+  }
+
+  /* Netflix-style info button */
+  .info-button {
+    @apply inline-flex items-center justify-center bg-neutral-600/70 hover:bg-neutral-600/50 text-white font-medium rounded-lg backdrop-blur-sm transition-all duration-300;
+    padding: 0.75rem 1.5rem;
+    gap: 0.5rem;
+    min-height: 44px;
+    /* iOS touch target size */
+  }
+
+  .info-button svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  /* Netflix-style progress bar */
+  .progress-bar {
+    @apply w-full h-1 bg-neutral-700 rounded-full overflow-hidden;
+  }
+
+  .progress-fill {
+    @apply h-full bg-netflix-500 transition-all duration-300;
+  }
+
+  /* Netflix-style rating */
+  .rating-netflix {
+    @apply inline-flex items-center gap-1 px-2 py-1 bg-neutral-800/80 rounded text-xs font-medium text-text-secondary;
+  }
+
+  /* Netflix-style badge */
+  .badge-netflix {
+    @apply inline-flex items-center px-2 py-1 bg-netflix-500 text-white text-xs font-semibold rounded uppercase tracking-wide;
+  }
+
+  .badge-new {
+    @apply bg-orange-600 text-white;
+  }
+
+  .badge-trending {
+    @apply bg-orange-500 text-white;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Modern spacing utilities */
+  .space-section {
+    @apply space-y-16 lg:space-y-24;
+  }
+
+  .space-content {
+    @apply space-y-8 lg:space-y-12;
+  }
+
+  /* Custom backdrop blur */
+  .backdrop-blur-xs {
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+  }
+
+  /* Netflix shadow utilities */
+  .shadow-modern {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6), 0 6px 12px rgba(255, 107, 53, 0.1);
+  }
+
+  .shadow-glow-sm {
+    box-shadow: 0 0 10px rgba(255, 107, 53, 0.3);
+  }
+
+  /* Animation delays for Netflix-style reveals */
+  .delay-100 {
+    animation-delay: 100ms;
+  }
+
+  .delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .delay-300 {
+    animation-delay: 300ms;
+  }
+
+  .delay-400 {
+    animation-delay: 400ms;
+  }
+
+  .delay-500 {
+    animation-delay: 500ms;
+  }
+
+  /* Netflix-specific utilities */
+  .aspect-netflix {
+    aspect-ratio: 16/9;
+  }
+
+  .aspect-netflix-poster {
+    aspect-ratio: 2/3;
+  }
+
+  .text-netflix-orange {
+    color: #FF6B35;
+  }
+
+  .bg-netflix-orange {
+    background-color: #FF6B35;
+  }
+
+  .border-netflix-orange {
+    border-color: #FF6B35;
+  }
+}
