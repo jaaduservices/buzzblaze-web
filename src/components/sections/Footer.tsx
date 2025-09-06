@@ -103,14 +103,9 @@ const Footer: React.FC = () => {
                                 whileHover={{ scale: 1.05 }}
                                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
                             >
-                                <img
-                                    src="/LOGO.png"
-                                    alt="Buzzblaze Media - Digital Marketing Agency Logo"
-                                    title="Buzzblaze Media - Digital Marketing Agency"
-                                    className="h-12 w-auto object-contain filter drop-shadow-lg"
-                                    loading="lazy"
-                                    decoding="async"
-                                />
+                                <div className="text-white text-xl lg:text-2xl font-bold tracking-tight">
+                                    Buzzblaze Media
+                                </div>
                                 <div className="absolute inset-0 bg-gradient-to-r from-netflix-500/20 to-orange-500/20 rounded-xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                             </motion.div>
                         </Link>
