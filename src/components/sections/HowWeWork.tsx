@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { Counter } from '../ui';
-import { h3 } from 'framer-motion/client';
+
 
 const HowWeWork: React.FC = () => {
     const navigate = useNavigate();
