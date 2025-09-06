@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { Counter } from '../ui';
+import { h3 } from 'framer-motion/client';
 
 const HowWeWork: React.FC = () => {
     const navigate = useNavigate();
@@ -269,7 +270,7 @@ const HowWeWork: React.FC = () => {
                 >
                     <div className="text-center mb-12">
                         <h3 className="card-title mb-6">
-                            Vidya Ads{' '}
+                            Buzzblaze Media{' '}
                             <span className="gradient-text">VS</span>{' '}
                             Other Agencies
                         </h3>
@@ -292,7 +293,7 @@ const HowWeWork: React.FC = () => {
                                     <h4 className="text-sm sm:text-lg font-semibold text-neutral-300">Features</h4>
                                 </div>
                                 <div className="bg-gradient-to-r from-accent-500 to-electric-500 rounded-xl sm:rounded-2xl p-2 sm:p-4 shadow-glow">
-                                    <h4 className="text-sm sm:text-lg font-bold text-white">Vidya Ads</h4>
+                                    <h4 className="text-sm sm:text-lg font-bold text-white">Buzzblaze Media</h4>
                                 </div>
                                 <div className="bg-neutral-800/50 rounded-xl sm:rounded-2xl p-2 sm:p-4 border border-neutral-700/50">
                                     <h4 className="text-sm sm:text-lg font-semibold text-neutral-400">Other Agencies</h4>
@@ -346,7 +347,7 @@ const HowWeWork: React.FC = () => {
                         transition={{ delay: 0.6 }}
                     >
                         <p className="text-neutral-400 mb-6 text-lg">
-                            Ready to experience the Vidya Ads difference?
+                            Ready to experience the Buzzblaze Media difference?
                         </p>
                         <motion.button
                             className="btn-primary"
