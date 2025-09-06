@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 
 interface CounterOptions {
     start?: number;
@@ -26,36 +26,7 @@ export const useCounterAnimation = ({
     const elementRef = useRef<HTMLElement>(null);
     const hasAnimated = useRef(false);
 
-    useEffect(() => {
-        if (!triggerOnView) {
-            animate();
-            return;
-        }
-
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting && !hasAnimated.current) {
-                    setIsInView(true);
-                    hasAnimated.current = true;
-                }
-            },
-            { threshold: 0.3 }
-        );
-
-        if (elementRef.current) {
-            observer.observe(elementRef.current);
-        }
-
-        return () => observer.disconnect();
-    }, [triggerOnView]);
-
-    useEffect(() => {
-        if (isInView || !triggerOnView) {
-            animate();
-        }
-    }, [isInView, triggerOnView]);
-
-    const animate = () => {
+    const animate = useCallback(() => {
         let startTime: number;
         const startValue = start;
         const endValue = end;
@@ -77,7 +48,39 @@ export const useCounterAnimation = ({
         };
 
         requestAnimationFrame(updateCount);
-    };
+    }, [start, end, duration]);
+
+    useEffect(() => {
+        if (!triggerOnView) {
+            animate();
+            return;
+        }
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting && !hasAnimated.current) {
+                    setIsInView(true);
+                    hasAnimated.current = true;
+                }
+            },
+            { threshold: 0.3 }
+        );
+
+        if (elementRef.current) {
+            observer.observe(elementRef.current);
+        }
+
+        return () => observer.disconnect();
+    }, [triggerOnView, animate]);
+
+    useEffect(() => {
+        if (isInView || !triggerOnView) {
+            animate();
+        }
+    }, [isInView, triggerOnView, animate]);
+
+
+
 
     const formatNumber = (num: number) => {
         const rounded = Number(num.toFixed(decimal));
@@ -129,4 +132,4 @@ export const parseNumberString = (value: string): CounterOptions => {
         decimal,
         separator: number >= 1000 && decimal === 0 && !suffix.includes('%') ? ',' : ''
     };
-}; 
+};
